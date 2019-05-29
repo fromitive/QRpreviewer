@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="static/css/mdb.min.css" rel="stylesheet">
+    <link href="static/css/main.css" rel="stylesheet">
+
+    <title>QRPreviewer</title>
+  </head>
+  <body onload="init()">
+	<div class="container h-100 d-flex">
+	<!-- Jumbotron -->
+	<div class="jumbotron p-0 main-app">
+
+	  <!-- Card image -->
+	  <div class="view overlay rounded-top">
+		  <video id="video" class="video-fluid" autoplay playsinline></video>
+		  <canvas id="qr-canvas" width="409" height="409" style="display:none;"></canvas>
+	    <a href="#">
+	      <div class="mask rgba-white-slight"></div>
+	    </a>
+	  </div>
+
+	  <!-- Card content -->
+	  <div class="card-body text-center mb-3">
+
+	    <!-- Title -->
+	    <h3 class="card-title h3 my-4"><strong>Card title</strong></h3>
+	    <!-- Text -->
+	    <p class="card-text py-2">Some quick example text to build on the card title and make up the bulk of the card's</p>
+	    <!-- Button -->
+	    <a href="#" class="btn purple-gradient btn-rounded mb-4">Button</a>
+
+	  </div>
+
+	</div>
+	<!-- Jumbotron -->
+	</div>
+	  <!-- scripts -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- qrcode javascript -->
+	<script type="text/javascript" src="static/js/grid.js"></script>
+	<script type="text/javascript" src="static/js/version.js"></script>
+	<script type="text/javascript" src="static/js/detector.js"></script>
+	<script type="text/javascript" src="static/js/formatinf.js"></script>
+	<script type="text/javascript" src="static/js/errorlevel.js"></script>
+	<script type="text/javascript" src="static/js/bitmat.js"></script>
+	<script type="text/javascript" src="static/js/datablock.js"></script>
+	<script type="text/javascript" src="static/js/bmparser.js"></script>
+	<script type="text/javascript" src="static/js/datamask.js"></script>
+	<script type="text/javascript" src="static/js/rsdecoder.js"></script>
+	<script type="text/javascript" src="static/js/gf256poly.js"></script>
+	<script type="text/javascript" src="static/js/gf256.js"></script>
+	<script type="text/javascript" src="static/js/decoder.js"></script>
+	<script type="text/javascript" src="static/js/qrcode.js"></script>
+	<script type="text/javascript" src="static/js/findpat.js"></script>
+	<script type="text/javascript" src="static/js/alignpat.js"></script>
+	<script type="text/javascript" src="static/js/databr.js"></script>
+	<script type="text/javascript" src="static/js/main.js"></script>
+  </body>
+</html>

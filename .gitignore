@@ -1,0 +1,11 @@
+*.pyc
+*~
+*.zip
+*.txt
+__pycache__
+env
+db.sqllite3
+*.png
+.DS_Store
+apikey.txt
+
