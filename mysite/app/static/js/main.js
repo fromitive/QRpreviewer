@@ -1,7 +1,7 @@
 var constraints = window.constraints = {
   video:{
 	  facingMode:{
-		  exact: 'environment'
+		  exact:'environment'
 	  }
   }
 }; // 카메라를 사용하기위해 constraints 속성을 설정해준다.
@@ -25,7 +25,7 @@ function handleSuccess(stream) {
 
 function read(result) {
   var result_url = result
-  console.log('result is ' + result);
+  var infoData = sendURL(result); // return JSON data
   autoModal(result_url);
   autoModal_attr(result_url);
 }
@@ -64,24 +64,32 @@ function autoModal_attr(result_url)
 
   if(result_url!=0)
   {
-    modal_level.classList.add('modal-success')
-    modal_yes_btn.classList.add('btn-success')
-    modal_no_btn.classList.add('btn-outline-success')
-  }
-  /*
-  if(result_url!=0)
+    modal_level.className='modal-dialog modal-dialog-centered modal-lg modal-notify modal-success'
+    modal_yes_btn.className='btn btn-success'
+    modal_no_btn.className='btn btn-outline-success waves-effect'
+  }/*
+  else if(result_url!=0)
   {
-    modal_level.classList.add('modal-dnager')
-    modal_yes_btn.classList.add('btn-danger')
-    modal_no_btn.classList.add('btn-outline-danger')
+    modal_level.className='modal-dialog modal-dialog-centered modal-lg modal-notify modal-danger'
+    modal_yes_btn.className='btn btn-danger'
+    modal_no_btn.className='btn btn-outline-danger waves-effect'
   }
-  if(result_url!=0)
+  else (result_url!=0)
   {
-    modal_level.classList.add('modal-warning')
-    modal_yes_btn.classList.add('btn-warning')
-    modal_no_btn.classList.add('btn-outline-warning')
+    modal_level.className='modal-dialog modal-dialog-centered modal-lg modal-notify modal-warning'
+    modal_yes_btn.className='btn btn-warning'
+    modal_no_btn.className='btn btn-outline-warning waves-effect'
   }
   */
+}
+
+//GET JSON DATA about URL
+function sendURL(url){
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("GET","https://moosong.iptime.org:8000/processing/"+url,false);
+	xhttp.send();
+	var raw = xhttp.responseText 
+	return JSON.parse(raw);
 }
 
 
