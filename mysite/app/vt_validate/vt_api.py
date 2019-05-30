@@ -1,5 +1,6 @@
 import requests
 import os
+import datetime
 #return json virustotal info
 def requestVirAPI(resource): # API이용해 데이터 가져옴
     url = 'https://www.virustotal.com/vtapi/v2/url/report'
@@ -29,9 +30,17 @@ def getVirInfo(resource):
     # 이 함수가 위의 두 함수의 내용을 포함하고 있음
     result = dict()
     jsonData=requestVirAPI(resource)
-    result.update({'scanDate':jsonData['scan_date']})
-    result.update({'positives':jsonData['positives']})
-    result.update({'total':jsonData['total']})
-    scanInfo = extractScanInfo(jsonData['scans'])
-    result.update({'scanInfo':scanInfo})
-    return result # dict형
+    if jsonData['response_code'] == 1:
+        result.update({'scanDate':jsonData['scan_date']})
+        result.update({'positives':jsonData['positives']})
+        result.update({'total':jsonData['total']})
+        scanInfo = extractScanInfo(jsonData['scans'])
+        result.update({'scanInfo':scanInfo})
+        return result # dict형
+    else:
+        result.update({'scanDate':str(datetime.datetime.now())})
+        result.update({'positives':0})
+        result.update({'total':0})
+        result.update({'scanInfo':{}})
+        return result # dict형
+

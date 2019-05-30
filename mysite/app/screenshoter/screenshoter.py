@@ -17,7 +17,7 @@ class Screenshoter:
     def shot(self):
         try:
             chrome_options = Options()
-            #chrome_options.add_argument("headless")
+            chrome_options.add_argument("headless")
             chrome_options.add_argument("window-size=360,640")
             chrome_options.add_argument("disable-gpu")
             chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)

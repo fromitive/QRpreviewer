@@ -97,11 +97,11 @@ function captureToCanvas() {
   try {
     context.drawImage(video, 0, 0);
     qrcode.decode();
-    setTimeout(captureToCanvas, 500);
+    setTimeout(captureToCanvas, 3000);
   } catch (e) {
     console.log(e)
-    setTimeout(captureToCanvas, 500);
+    setTimeout(captureToCanvas, 3000);
   }
 }
 
-setTimeout(captureToCanvas, 500);
+setTimeout(captureToCanvas, 3000);
