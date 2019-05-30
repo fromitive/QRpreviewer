@@ -1,12 +1,9 @@
 var constraints = window.constraints = {
-  video: {
-	  width:500,
-	  height:200,
+  video:{
 	  facingMode:{
-		exact: 'environment'	  
+		  exact: 'environment'
 	  }
   }
-  
 }; // 카메라를 사용하기위해 constraints 속성을 설정해준다.
 var video = document.getElementById('video'); // video tag assign
 var canvas = document.getElementById('qr-canvas'); // for capturing picture
@@ -29,7 +26,8 @@ function handleSuccess(stream) {
 function read(result) {
   var result_url = result
   console.log('result is ' + result);
-  autoModal(result_url)
+  autoModal(result_url);
+  autoModal_attr(result_url);
 }
 
 // autoModal
@@ -49,10 +47,43 @@ function autoModal(result_url) {
     urlMove.onclick = function() {
       window.open(result_url, "_blank");
     }
+
+
+
   } else {
     return;
   }
 }
+
+
+function autoModal_attr(result_url)
+{
+  var modal_level=document.getElementById("modal_level");
+  var modal_yes_btn=document.getElementById("modal_yes_btn");
+  var modal_no_btn=document.getElementById("modal_no_btn");
+
+  if(result_url!=0)
+  {
+    modal_level.classList.add('modal-success')
+    modal_yes_btn.classList.add('btn-success')
+    modal_no_btn.classList.add('btn-outline-success')
+  }
+  /*
+  if(result_url!=0)
+  {
+    modal_level.classList.add('modal-dnager')
+    modal_yes_btn.classList.add('btn-danger')
+    modal_no_btn.classList.add('btn-outline-danger')
+  }
+  if(result_url!=0)
+  {
+    modal_level.classList.add('modal-warning')
+    modal_yes_btn.classList.add('btn-warning')
+    modal_no_btn.classList.add('btn-outline-warning')
+  }
+  */
+}
+
 
 function captureToCanvas() {
   try {
