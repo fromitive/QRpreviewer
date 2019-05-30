@@ -12,8 +12,8 @@ class WhoisInfo(models.Model):
     qrInfo = models.OneToOneField(QRInfo, related_name='whoisInfo', on_delete=models.CASCADE, primary_key=True)
     registrar = models.TextField(null=True)
     org = models.TextField(null=True)
-    address = models.TextField()
-    city = models.TextField()
+    address = models.TextField(null=True)
+    city = models.TextField(null=True)
     country = models.TextField(null=True)
 
 class DomainName(models.Model):
@@ -21,7 +21,7 @@ class DomainName(models.Model):
     wInfo = models.ForeignKey(WhoisInfo,related_name='domainNames',on_delete=models.CASCADE)
 
 class EmailInfo(models.Model):
-    email = models.EmailField()
+    email = models.EmailField(null=True)
     wInfo = models.ForeignKey(WhoisInfo,related_name='emails',on_delete=models.CASCADE)
 
 class VirusTotalInfo(models.Model):

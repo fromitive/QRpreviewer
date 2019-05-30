@@ -1,12 +1,15 @@
 import requests
-
+import os
 #return json virustotal info
 def requestVirAPI(resource): # API이용해 데이터 가져옴
     url = 'https://www.virustotal.com/vtapi/v2/url/report'
     #1. open api key
     try:
+        print(os.getcwd())
         with open('apikey.txt','r') as f:
             key = f.read()
+            key = key.replace("\n","")
+            print(key)
             params = {'apikey':key, 'resource':resource}
             response = requests.get(url, params=params)
             return response.json() # JSON형태를 dict형태로 return

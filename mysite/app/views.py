@@ -44,58 +44,68 @@ def processing(request,url):
             return Response(result.data)
        except Exception as e:
            print("[DEBUG] validate error : ",e)
+           qrinfo.delete()
            return Response(qrseri.errors,status=status.HTTP_400_BAD_REQUEST)  #todo : 500 error
 # Create your views here.
 
 def saveVirusTotalInfo(qrinfo):
-    vt_api_info = getVirInfo(qrinfo.url) # dict형
-    virInfo = VirusTotalInfo(qrInfo=qrinfo,scanDate=vt_api_info['scanDate'],positives=vt_api_info['positives'],total=vt_api_info['total'])
-    virInfo.save()
-    #machineName save & scanInfo save
-    for mname in vt_api_info['scanInfo'].keys():
-        mnameModel = None
-        if not machineName.objects.filter(name=mname).exists():
-            print(mname,"not saved")
-            mnameModel = machineName(name=mname)
-            mnameModel.save()
-        else:
-            mnameModel = machineName.objects.get(name=mname)
-        sinfo = ScanInfo(vInfo=virInfo,machineName=mnameModel,detected=vt_api_info['scanInfo'][mname]['detected'],result=vt_api_info['scanInfo'][mname]['result'])
-        sinfo.save()
+    try:
+        vt_api_info = getVirInfo(qrinfo.url) # dict형
+        virInfo = VirusTotalInfo(qrInfo=qrinfo,scanDate=vt_api_info['scanDate'],positives=vt_api_info['positives'],total=vt_api_info['total'])
+        virInfo.save()
+        #machineName save & scanInfo save
+        for mname in vt_api_info['scanInfo'].keys():
+            mnameModel = None
+            if not machineName.objects.filter(name=mname).exists():
+                print(mname,"not saved")
+                mnameModel = machineName(name=mname)
+                mnameModel.save()
+            else:
+                mnameModel = machineName.objects.get(name=mname)
+            sinfo = ScanInfo(vInfo=virInfo,machineName=mnameModel,detected=vt_api_info['scanInfo'][mname]['detected'],result=vt_api_info['scanInfo'][mname]['result'])
+            sinfo.save()
+    except Exception as e:
+        print("DEBUG virustotal api error",e)
     return virInfo
 
 def saveWhoisInfo(qrinfo):
-    whoisRAWInfo = whois.whois(qrinfo.url)
+    try:
+        whoisRAWInfo = whois.whois(qrinfo.url)
 
-    wInfo = WhoisInfo(qrInfo=qrinfo, registrar=whoisRAWInfo['registrar'], 
-            org=whoisRAWInfo['org'], address=whoisRAWInfo['address'], 
-            city=whoisRAWInfo['city'], country=whoisRAWInfo['country'])
-    
+        wInfo = WhoisInfo(qrInfo=qrinfo, registrar=whoisRAWInfo['registrar'], 
+                org=whoisRAWInfo['org'], address=whoisRAWInfo['address'], 
+                city=whoisRAWInfo['city'], country=whoisRAWInfo['country'])
+        
 
-    #2-4 winfo.save()
-    wInfo.save()
+        #2-4 winfo.save()
+        wInfo.save()
 
-    #2-5 Save domainname 
-    if type(whoisRAWInfo['domain_name']) == list:
-        for domainName in whoisRAWInfo['domain_name']:
-            dn = DomainName(name=domainName,wInfo=wInfo)
+        #2-5 Save domainname 
+        if type(whoisRAWInfo['domain_name']) == list:
+            for domainName in whoisRAWInfo['domain_name']:
+                dn = DomainName(name=domainName,wInfo=wInfo)
+                dn.save()
+        else:
+            dn = DomainName(name=whoisRAWInfo['domain_name'],wInfo=wInfo)
             dn.save()
-    else:
-        dn = DomainName(name=whoisRAWInfo['domain_name'],wInfo=wInfo)
-        dn.save()
-    
-    #2-6 Save emails
-    if type(whoisRAWInfo['emails']) == list:
-        for email in whoisRAWInfo['emails']:
-            eInfo = EmailInfo(email=email,wInfo=wInfo)
+        
+        #2-6 Save emails
+        if type(whoisRAWInfo['emails']) == list:
+            for email in whoisRAWInfo['emails']:
+                eInfo = EmailInfo(email=email,wInfo=wInfo)
+                eInfo.save()
+        else:
+            eInfo = EmailInfo(email=whoisRAWInfo['emails'],wInfo=wInfo)
             eInfo.save()
-    else:
-        eInfo = EmailInfo(name=whoisRAWInfo['emails'],wInfo=wInfo)
-        eInfo.save()
+    except Exception as e:
+        print("[debug] whois api error!",e)
 
 def saveScreenshotInfo(qrinfo):
-    dir_path = 'app/static/images'
-    shoter = Screenshoter(qrinfo.url,dir_path) 
-    imgPath= shoter.shot()
-    sinfo = ScreenshotInfo(qrInfo=qrinfo,imgPath=imgPath)
-    sinfo.save() 
+    try:
+        dir_path = 'app/static/images'
+        shoter = Screenshoter(qrinfo.url,dir_path) 
+        imgPath= shoter.shot()
+        sinfo = ScreenshotInfo(qrInfo=qrinfo,imgPath=imgPath)
+        sinfo.save() 
+    except Exception as e:
+        print("[debug] screenshot error",e)
