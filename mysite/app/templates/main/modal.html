@@ -58,13 +58,13 @@
     </div>
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centralModalInfo">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResult">
   Launch demo modal
 </button>
 
 <!-- Central Modal Medium Info -->
-<div class="modal fade" id="centralModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div id="modal-color" class="modal-dialog modal-notify modal-info" role="document">
+<div class="modal fade" id="modalResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div id="modal-color" class="modal-dialog modal-dialog-scrollable modal-notify modal-info" role="document">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
@@ -82,7 +82,7 @@
 	<div class="row">
 	  <!-- Grid column -->
 	  <div class="col-md-12 mb-3">
-	    <img src="static/imgs/test.png" class="img-fluid z-depth-1" alt="Responsive image">
+	    <img id="siteImage" src="static/imgs/test.png" class="img-fluid z-depth-1" alt="Responsive image">
 	  </div>
       <!-- Grid column -->
         </div>
@@ -104,9 +104,68 @@
 	    <!-- Card body -->
 	    <div id="whoisInfo" class="collapse" role="tabpanel" aria-labelledby="whoisInfo" data-parent="#accordionEx">
 	      <div class="card-body" id="whois-content">
-		      wiwiwi
+		      <div class="row">
+		      		<div class="col-4 ">
+					<h6>도메인</h6>	
+		      		</div>
+		      		<div id="wDomainNames" class="col-8">
+							
+		      		</div>
+		      </div>
 		      <hr>
-		      wiwiwi
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>등록기관</h6>	
+		      		</div>
+		      		<div id="wRegistar" class="col-8">
+							
+		      		</div>
+		      </div>
+		      <hr>
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>회사명</h6>
+		      		</div>
+		      		<div id="wOrg" class="col-8">
+							
+		      		</div>
+		      </div>
+		      <hr>
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>국가</h6>	
+		      		</div>
+		      		<div id="wCountry" class="col-8">
+							
+		      		</div>
+		      </div>
+		      <hr>
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>도시명</h6>	
+		      		</div>
+		      		<div id="wCity" class="col-8">
+							
+		      		</div>
+		      </div>
+		      <hr>
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>주소</h6>		
+		      		</div>
+		      		<div id="wAddress" class="col-8">
+							
+		      		</div>
+		      </div>
+		      <hr>
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>이메일</h6>	
+		      		</div>
+		      		<div id="wEmails" class="col-8">
+							
+		      		</div>
+		      </div>
 	      </div>
 	    </div>
 
@@ -128,11 +187,34 @@
 	    <!-- Card body -->
 	    <div id="virusInfo" class="collapse" role="tabpanel" aria-labelledby="virusInfo" data-parent="#accordionEx">
 	      <div class="card-body">
-		      faewfaew
-		      awefawe
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>검사 날짜</h6>	
+		      		</div>
+		      		<div id="vScanDate" class="col-8">
+							
+		      		</div>
+		      </div>
 		      <hr>
-		      faewfa
+		      <div class="row">
+		      		<div class="col-4">
+					<h6>발견/ 검사한 엔진 수</h6>	
+		      		</div>
+		      		<div id="vPositivesAndTotal" class="col-8">
+							
+		      		</div>
+		      </div>
 		      <hr>
+		      <div class="row">
+			<div class="col-4">
+				<h6>검사결과</h6>	
+			</div>
+		      </div>
+		      <div id="vScanResults" class="row">
+			<div class="col-12">
+				발견되지 않음
+			</div>
+		      </div>
 	      </div>
 	    </div>
 
