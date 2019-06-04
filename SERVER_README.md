@@ -1,27 +1,27 @@
 # Server Readme
-#
-#
-## 1. ÇÁ·ÎÁ§Æ® °³¿ä
-* QRÄÚµå¸¦ ½ºÄµÇÏ¿© »ç¿ëÀÚ°¡ ÇØ´ç ¸µÅ©·Î ¿¬°áµÇ±â Àü¿¡, ½ºÅ©¸°¼¦ Á¤º¸¿Í ÇØ´ç »çÀÌÆ®ÀÇ Á¤º¸ ¹× ¾Ç¼º»çÀÌÆ® À¯¹«¸¦ ÆÇº°ÇØ »ç¿ëÀÚ¿¡°Ô ¾Ë¸®´Â ¹Ì¸®º¸±â ½Ã½ºÅÛÀ» À¥¾îÇÃ¸®ÄÉÀÌ¼ÇÀ¸·Î °³¹ß
----
-## 2. ÇÁ·ÎÁ§Æ® ±¸¼º
-* django - À¥ ¼­¹ö (RESTful, sslÀû¿ë)
-* screenshoter - ¸ÞÀÎ ÆäÀÌÁöÀÇ ½ºÅ©¸°¼¦À» ÂïÀ½
-* whois API - À¥ ÆäÀÌÁöÀÇ Á¤º¸¸¦ Á¦°ø
-* virustotal API - À¥ ÆäÀÌÁöÀÇ ¾Ç¼º À¯¹« Á¤º¸¸¦ Á¦°ø
----
-## 3. ÇÁ·ÎÁ§Æ® ¼³Ä¡
-#####	1) ÀÇÁ¸ÆÐÅ°Áö
-* django - Django À¥ ¼­¹ö¸¦ ±¸ÃàÇÏ±â À§ÇÑ ÇÊ¼ö ÆÐÅ°ÁöÀÌ´Ù.
-* djangorestframework - ¼­¹ö¿Í Å¬¶óÀÌ¾ðÆ®°¡ RESTFUL API·Î Åë½ÅÇÏ±â À§ÇÑ ÆÐÅ°ÁöÀÌ´Ù.
-* django-sslserver - MediaDevice¸¦ »ç¿ëÇÏ±â À§ÇØ Django web-server¿¡ SSLÀ» Àû¿ë½ÃÅ°´Â ÆÐÅ°ÁöÀÌ´Ù.
-* selenium - Å¬¶óÀÌ¾ðÆ® ´ë½Å »çÀÌÆ®¿¡ Á¢¼ÓÇÏ¿© ½ºÅ©¸°¼¦À» Ä¸Ã³ÇÏ±â À§ÇÑ ÆÐÅ°ÁöÀÌ´Ù.
-* requests - HTTP ¿äÃ»À» º¸³»´Â Python ÆÐÅ°ÁöÀÌ¸ç, Whois,Virustotal API¸¦ ¿øÈ°È÷ »ç¿ëÇÏ±â À§ÇØ ÇÊ¿äÇÏ´Ù.
 
-#####	2) ¼³Ä¡ ¹æ¹ý
-* 2-1) °¡»óÈ¯°æ ±¸¼º
 
-    ¡Ø º» ÇÁ·ÎÁ§Æ®¿¡¼­´Â Python 3.7.3 ¹öÀüÀ» »ç¿ëÇÏ¿´°í, ¾Æ·¡ÀÇ ¼³Ä¡ ¹æ¹ýÀº PythonÀÌ ¼³Ä¡µÇ¾ú´Ù°í °¡Á¤ÇÑ ÈÄÀÇ ¼³Ä¡ ¹æ¹ýÀÔ´Ï´Ù. ¸¸ÀÏ PythonÀÌ ¼³Ä¡µÇ¾îÀÖÁö ¾Ê´Ù¸é, ¸ÕÀú PythonÀ» ¼³Ä¡ÇÏ¿© ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.
+## 1. í”„ë¡œì íŠ¸ ê°œìš”
+* QRì½”ë“œë¥¼ ìŠ¤ìº”í•˜ì—¬ ì‚¬ìš©ìžê°€ í•´ë‹¹ ë§í¬ë¡œ ì—°ê²°ë˜ê¸° ì „ì—, ìŠ¤í¬ë¦°ìƒ· ì •ë³´ì™€ í•´ë‹¹ ì‚¬ì´íŠ¸ì˜ ì •ë³´ ë° ì•…ì„±ì‚¬ì´íŠ¸ ìœ ë¬´ë¥¼ íŒë³„í•´ ì‚¬ìš©ìžì—ê²Œ ì•Œë¦¬ëŠ” ë¯¸ë¦¬ë³´ê¸° ì‹œìŠ¤í…œì„ ì›¹ì–´í”Œë¦¬ì¼€ì´ì…˜ìœ¼ë¡œ ê°œë°œ
+---
+## 2. í”„ë¡œì íŠ¸ êµ¬ì„±
+* django - ì›¹ ì„œë²„ (RESTful, sslì ìš©)
+* screenshoter - ë©”ì¸ íŽ˜ì´ì§€ì˜ ìŠ¤í¬ë¦°ìƒ·ì„ ì°ìŒ
+* whois API - ì›¹ íŽ˜ì´ì§€ì˜ ì •ë³´ë¥¼ ì œê³µ
+* virustotal API - ì›¹ íŽ˜ì´ì§€ì˜ ì•…ì„± ìœ ë¬´ ì •ë³´ë¥¼ ì œê³µ
+---
+## 3. í”„ë¡œì íŠ¸ ì„¤ì¹˜
+#####	1) ì˜ì¡´íŒ¨í‚¤ì§€
+* django - Django ì›¹ ì„œë²„ë¥¼ êµ¬ì¶•í•˜ê¸° ìœ„í•œ í•„ìˆ˜ íŒ¨í‚¤ì§€ì´ë‹¤.
+* djangorestframework - ì„œë²„ì™€ í´ë¼ì´ì–¸íŠ¸ê°€ RESTFUL APIë¡œ í†µì‹ í•˜ê¸° ìœ„í•œ íŒ¨í‚¤ì§€ì´ë‹¤.
+* django-sslserver - MediaDeviceë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ Django web-serverì— SSLì„ ì ìš©ì‹œí‚¤ëŠ” íŒ¨í‚¤ì§€ì´ë‹¤.
+* selenium - í´ë¼ì´ì–¸íŠ¸ ëŒ€ì‹  ì‚¬ì´íŠ¸ì— ì ‘ì†í•˜ì—¬ ìŠ¤í¬ë¦°ìƒ·ì„ ìº¡ì²˜í•˜ê¸° ìœ„í•œ íŒ¨í‚¤ì§€ì´ë‹¤.
+* requests - HTTP ìš”ì²­ì„ ë³´ë‚´ëŠ” Python íŒ¨í‚¤ì§€ì´ë©°, Whois,Virustotal APIë¥¼ ì›í™œížˆ ì‚¬ìš©í•˜ê¸° ìœ„í•´ í•„ìš”í•˜ë‹¤.
+
+#####	2) ì„¤ì¹˜ ë°©ë²•
+* 2-1) ê°€ìƒí™˜ê²½ êµ¬ì„±
+
+    â€» ë³¸ í”„ë¡œì íŠ¸ì—ì„œëŠ” Python 3.7.3 ë²„ì „ì„ ì‚¬ìš©í•˜ì˜€ê³ , ì•„ëž˜ì˜ ì„¤ì¹˜ ë°©ë²•ì€ Pythonì´ ì„¤ì¹˜ë˜ì—ˆë‹¤ê³  ê°€ì •í•œ í›„ì˜ ì„¤ì¹˜ ë°©ë²•ìž…ë‹ˆë‹¤. ë§Œì¼ Pythonì´ ì„¤ì¹˜ë˜ì–´ìžˆì§€ ì•Šë‹¤ë©´, ë¨¼ì € Pythonì„ ì„¤ì¹˜í•˜ì—¬ ì£¼ì‹œê¸° ë°”ëžë‹ˆë‹¤.
     * Linux
         ```sh
         $ python3 -m venv env
@@ -36,12 +36,12 @@
     ```sh
     (env)$ 
     ```
-    À§¿Í °°ÀÌ ¸í·É ÇÁ·ÒÇÁÆ® ÁÂÃø¿¡ °¡»óÈ¯°æ ÀÌ¸§ÀÌ ³ª¿Â´Ù¸é °¡»óÈ¯°æ Àû¿ëÀÌ ¿Ï·áµÈ °ÍÀÌ´Ù.
+    ìœ„ì™€ ê°™ì´ ëª…ë ¹ í”„ë¡¬í”„íŠ¸ ì¢Œì¸¡ì— ê°€ìƒí™˜ê²½ ì´ë¦„ì´ ë‚˜ì˜¨ë‹¤ë©´ ê°€ìƒí™˜ê²½ ì ìš©ì´ ì™„ë£Œëœ ê²ƒì´ë‹¤.
 
-* 2-2) ÆÐÅ°Áö ¼³Ä¡
+* 2-2) íŒ¨í‚¤ì§€ ì„¤ì¹˜
 
-    ¡Ø ¸ðµç ÆÐÅ°Áö ¼³Ä¡´Â °¡»óÈ¯°æ¿¡¼­ ÀÌ·ç¾îÁø´Ù.
-    * pip ¹öÀü ¾÷±×·¹ÀÌµå
+    â€» ëª¨ë“  íŒ¨í‚¤ì§€ ì„¤ì¹˜ëŠ” ê°€ìƒí™˜ê²½ì—ì„œ ì´ë£¨ì–´ì§„ë‹¤.
+    * pip ë²„ì „ ì—…ê·¸ë ˆì´ë“œ
          * Linux
             ```sh
             (env)$ pip install --upgrade pip
@@ -50,51 +50,51 @@
             ```sh
             (env)$ python -m pip install --upgrade pip
             ```
-    * django ÆÐÅ°Áö ¼³Ä¡ - º» ÇÁ·ÎÁ§Æ®¿¡¼­´Â Django 2.0.0 ¹öÀüÀ» »ç¿ëÇÏ¿´´Ù.
+    * django íŒ¨í‚¤ì§€ ì„¤ì¹˜ - ë³¸ í”„ë¡œì íŠ¸ì—ì„œëŠ” Django 2.0.0 ë²„ì „ì„ ì‚¬ìš©í•˜ì˜€ë‹¤.
         ```sh
         (env)$ pip install django~=2.0.0
         ```
-    * djangorestframework ÆÐÅ°Áö ¼³Ä¡
+    * djangorestframework íŒ¨í‚¤ì§€ ì„¤ì¹˜
          ```sh
         (env)$ pip install djangorestframework
         ```
-    * django-sslserver ÆÐÅ°Áö ¼³Ä¡
+    * django-sslserver íŒ¨í‚¤ì§€ ì„¤ì¹˜
         ```sh
         (env)$ pip install django-sslserver
         ```
-    * selenium ÆÐÅ°Áö ¼³Ä¡
+    * selenium íŒ¨í‚¤ì§€ ì„¤ì¹˜
         ```sh
         (env)$ pip install selenium
         ```
-    * requests ÆÐÅ°Áö ¼³Ä¡
+    * requests íŒ¨í‚¤ì§€ ì„¤ì¹˜
         ```sh
         (env)$ pip install requests
         ```
     
-* 2-3) django ¼³Á¤
-    * makemigrations - ¸ðµ¨ÀÇ º¯°æ»çÇ×À» ÆÄÀÏ·Î »ý¼º
+* 2-3) django ì„¤ì •
+    * makemigrations - ëª¨ë¸ì˜ ë³€ê²½ì‚¬í•­ì„ íŒŒì¼ë¡œ ìƒì„±
         ```sh
         (env)$ python manage.py makemigrations app
         ```
-    * migrate - »ý¼ºµÈ º¯°æ»çÇ× ÆÄÀÏÀ» DB¿¡ Àû¿ë
+    * migrate - ìƒì„±ëœ ë³€ê²½ì‚¬í•­ íŒŒì¼ì„ DBì— ì ìš©
         ```sh
         (env)$ python manage.py migrate
         ```
-* 2-4) Screenshoter ¼³Á¤
-    * È¯°æ º¯¼ö ¼³Á¤
-    seleniumÀÌ webdriver¸¦ ¿ÂÀüÈ÷ ÀÎ½ÄÇÏ±â À§ÇØ¼­´Â È¯°æº¯¼ö¸¦ ¼³Á¤ÇÒ ÇÊ¿ä°¡ ÀÖ´Ù. webdriver¸¦ ¾ÐÃà Ç®¾î¼­ ÇØ´ç µð·ºÅä¸®¸¦ PATH º¯¼ö¿¡ Ãß°¡ÇØÁØ´Ù. Linux ±âÁØÀ¸·Î È¨ µð·ºÅä¸® ¾È¿¡ ÀÚ½ÅÀÌ bash½©À» »ç¿ëÇÑ´Ù¸é .bashrc¿¡ ´ÙÀ½°ú °°Àº ÁÙÀ» Ãß°¡ÇØÁØ´Ù.
+* 2-4) Screenshoter ì„¤ì •
+    * í™˜ê²½ ë³€ìˆ˜ ì„¤ì •
+    seleniumì´ webdriverë¥¼ ì˜¨ì „ížˆ ì¸ì‹í•˜ê¸° ìœ„í•´ì„œëŠ” í™˜ê²½ë³€ìˆ˜ë¥¼ ì„¤ì •í•  í•„ìš”ê°€ ìžˆë‹¤. webdriverë¥¼ ì••ì¶• í’€ì–´ì„œ í•´ë‹¹ ë””ë ‰í† ë¦¬ë¥¼ PATH ë³€ìˆ˜ì— ì¶”ê°€í•´ì¤€ë‹¤. Linux ê¸°ì¤€ìœ¼ë¡œ í™ˆ ë””ë ‰í† ë¦¬ ì•ˆì— ìžì‹ ì´ bashì‰˜ì„ ì‚¬ìš©í•œë‹¤ë©´ .bashrcì— ë‹¤ìŒê³¼ ê°™ì€ ì¤„ì„ ì¶”ê°€í•´ì¤€ë‹¤.
     
          ```sh
         PATH=$PATH:/path/to/webdriver/directory
         ```
-#####	3) ½ÇÇà ¹æ¹ý
-* 3-1) Å×½ºÆ® ½ÇÇà ¹æ¹ý
-    sslÀ» Àû¿ëÇØ ¼­¹ö¸¦ ½ÇÇàÇÏ´Â ¹æ¹ýÀº ¾Æ·¡¿Í °°´Ù.
+#####	3) ì‹¤í–‰ ë°©ë²•
+* 3-1) í…ŒìŠ¤íŠ¸ ì‹¤í–‰ ë°©ë²•
+    sslì„ ì ìš©í•´ ì„œë²„ë¥¼ ì‹¤í–‰í•˜ëŠ” ë°©ë²•ì€ ì•„ëž˜ì™€ ê°™ë‹¤.
     ```sh
     (env)$ python manage.py runsslserver
     ```
-* 3-2) ¸ð¹ÙÀÏ ½ÇÇà ¹æ¹ý
-    settings.py ¸¦ ¿­°í ALLOWED_HOSTS ¿¡ ¾Æ·¡¿Í °°ÀÌ »ç¿ëÇÒ µµ¸ÞÀÎÀ» Ãß°¡ÇÑ´Ù.
+* 3-2) ëª¨ë°”ì¼ ì‹¤í–‰ ë°©ë²•
+    settings.py ë¥¼ ì—´ê³  ALLOWED_HOSTS ì— ì•„ëž˜ì™€ ê°™ì´ ì‚¬ìš©í•  ë„ë©”ì¸ì„ ì¶”ê°€í•œë‹¤.
     ```sh
     # settings.py
     
@@ -103,7 +103,7 @@
         '.moosong.iptime.org',
     ]
     ```
-    ¾Æ·¡¿Í °°ÀÌ Æ÷Æ®¹øÈ£¸¦ ÁöÁ¤ÇØ ¼­¹ö¸¦ ½ÇÇàÇÑ´Ù.
+    ì•„ëž˜ì™€ ê°™ì´ í¬íŠ¸ë²ˆí˜¸ë¥¼ ì§€ì •í•´ ì„œë²„ë¥¼ ì‹¤í–‰í•œë‹¤.
     ```sh
     (env)$ python manage.py runserver 0.0.0.0:8000
     ```
