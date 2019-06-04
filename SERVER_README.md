@@ -29,12 +29,12 @@
         ```
     * Windows
         ```sh
-        $ python -m venv env
-        $ env/Scripts/activate
+        > python -m venv env
+        > env/Scripts/activate
         ```
     #
     ```sh
-    (env)$ 
+    (env)$
     ```
     위와 같이 명령 프롬프트 좌측에 가상환경 이름이 나온다면 가상환경 적용이 완료된 것이다.
 
@@ -48,7 +48,7 @@
             ```
         * Windows
             ```sh
-            (env)$ python -m pip install --upgrade pip
+            (env)> python -m pip install --upgrade pip
             ```
     * django 패키지 설치 - 본 프로젝트에서는 Django 2.0.0 버전을 사용하였다.
         ```sh
@@ -100,7 +100,7 @@
     
     ALLOWED_HOSTS = [
         ...,
-        '.moosong.iptime.org',
+        'your.domain OR IP',
     ]
     ```
     아래와 같이 포트번호를 지정해 서버를 실행한다.
