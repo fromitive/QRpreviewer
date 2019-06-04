@@ -105,5 +105,5 @@
     ```
     아래와 같이 포트번호를 지정해 서버를 실행한다.
     ```sh
-    (env)$ python manage.py runserver 0.0.0.0:8000
+    (env)$ python manage.py runsslserver 0.0.0.0:8000
     ```
