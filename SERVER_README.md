@@ -100,7 +100,7 @@
     
     ALLOWED_HOSTS = [
         ...,
-        'your.domain OR IP',
+        '도메인 이름 또는 IP',
     ]
     ```
     아래와 같이 포트번호를 지정해 서버를 실행한다.
