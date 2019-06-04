@@ -155,6 +155,10 @@ function clearText(){
 }
 //parse whoisInfo
 function parseWhois(whoisInfo){
+	if(whoisInfo === null){
+		clearText();
+		return;
+	}
 	clearText();
 	var elDomainNames = $('#wDomainNames');	
 	var elRegistar = $('#wRegistar');
@@ -187,17 +191,24 @@ function whoisObjectsToString(objects){
 			
 }
 function acceptText(jqueryElement,Content){
-	if(typeof Content === 'object'){
-		jqueryElement.html(whoisObjectsToString(Content));
-	}
-	else if(typeof Content === 'string'){//string
-		jqueryElement.text(Content);
-	}
+		if(typeof Content === 'object'){
+			jqueryElement.html(whoisObjectsToString(Content));
+		}
+		else if(typeof Content === 'string'){//string
+			jqueryElement.text(Content);
+		}
+		else{
+			jqueryElement.text('');
+		}
 }
 
 //end whoisInfo
 //parse virusInfo
 function parseVirusTotal(virusInfo){
+	if(virusInfo === null){
+		clearText();
+		return;
+	}
 	var elScanDate = $("#vScanDate");
 	var elPositivesAndTotal = $("#vPositivesAndTotal");
 	var positivesAndTotal = virusInfo.positives+' / '+virusInfo.total;
@@ -248,14 +259,14 @@ function captureToCanvas() {
   try {
     context.drawImage(video, 0, 0);
     qrcode.decode();
-    setTimeout(captureToCanvas, 3000);
+    setTimeout(captureToCanvas, 1000);
   } catch (e) {
     console.log(e)
-    setTimeout(captureToCanvas, 3000);
+    setTimeout(captureToCanvas, 1000);
   }
 }
 //event handle
-setTimeout(captureToCanvas, 3000);
+setTimeout(captureToCanvas, 1000);
 
 $("#btnopen").on("click",function(){
  window.open(current_decoded, "_blank");

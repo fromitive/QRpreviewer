@@ -7,7 +7,7 @@ from .serializers import *
 from .screenshoter.screenshoter import Screenshoter
 from .vt_validate.vt_api import * #for vt_api
 import whois
-
+import sys
 def mainPage(request):
     return render(request,'main/main.html',{})
 
@@ -31,6 +31,7 @@ def processing(request,url):
             #1 call virustotal api
             virInfo=saveVirusTotalInfo(qrinfo)
             #2 call whoisapi from url
+            
             saveWhoisInfo(qrinfo)
             #3. get screenshot
             if virInfo.positives:
@@ -41,9 +42,12 @@ def processing(request,url):
 
             #4 generate serializer
             result = TestSerializer(qrinfo)
+            print('data is :',result.data)
             return Response(result.data)
        except Exception as e:
+           _,_, tb = sys.exc_info()
            print("[DEBUG] validate error : ",e)
+           print("[DEBUG] error line no =",tb.tb_lineno)
            qrinfo.delete()
            return Response(qrseri.errors,status=status.HTTP_400_BAD_REQUEST)  #todo : 500 error
 # Create your views here.
