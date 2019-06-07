@@ -11,6 +11,15 @@ import sys
 def mainPage(request):
     return render(request,'main/main.html',{})
 
+def ServicesPage(request):
+    return render(request,'main/services.html',{})
+
+def aboutPage(request):
+    return render(request,'main/about.html',{})
+
+def contactPage(request):
+    return render(request,'main/contact.html',{})
+
 @api_view(['GET'])
 @renderer_classes((JSONRenderer,))
 def processing(request,url):

@@ -4,7 +4,7 @@
 *.txt
 __pycache__
 env
-db.sqlite3
+mysite/db.sqlite3
 *.png
 .DS_Store
 apikey.txt

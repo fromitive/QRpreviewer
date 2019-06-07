@@ -274,3 +274,4 @@ $("#btnopen").on("click",function(){
 $("#btnclose").click(function() {
   $("#qrResult").modal('hide');
 });
+document.body.onload = init;

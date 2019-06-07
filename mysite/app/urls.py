@@ -19,6 +19,9 @@ from . import views
 
 urlpatterns = [
     path('',views.mainPage,name='mainPage') ,
+    path('services',views.ServicesPage,name='ServicesPage'),
+    path('about',views.aboutPage,name='aboutPage'),
+    path('contact',views.contactPage,name='contactPage'),
     path('processing/<path:url>/',views.processing,name='processing'),    
     path('api-auth/',include('rest_framework.urls',namespace='rest_framework')),
 ]
