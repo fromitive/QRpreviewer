@@ -1,4 +1,4 @@
-# Server Readme
+﻿# Server Readme
 
 
 ## 1. 프로젝트 개요
@@ -11,12 +11,13 @@
 * virustotal API - 웹 페이지의 악성 유무 정보를 제공
 ---
 ## 3. 프로젝트 설치
-#####	1) 의존패키지
-* django - Django 웹 서버를 구축하기 위한 필수 패키지이다.
-* djangorestframework - 서버와 클라이언트가 RESTFUL API로 통신하기 위한 패키지이다.
+#####	1) 의존 패키지
+* django - Django 웹 서버를 구축하기 위한 필수 프레임워크이다.
+* djangorestframework - 서버와 클라이언트가 RESTFUL API로 통신하기 위한 프레임워크이다.
 * django-sslserver - MediaDevice를 사용하기 위해 Django web-server에 SSL을 적용시키는 패키지이다.
 * selenium - 클라이언트 대신 사이트에 접속하여 스크린샷을 캡처하기 위한 패키지이다.
 * requests - HTTP 요청을 보내는 Python 패키지이며, Whois,Virustotal API를 원활히 사용하기 위해 필요하다.
+* whois - URL에 대한 사이트 정보인 whois정보를 제공하는 Python 패키지이다.
 
 #####	2) 설치 방법
 * 2-1) 가상환경 구성
@@ -32,7 +33,7 @@
         > python -m venv env
         > env/Scripts/activate
         ```
-    #
+    
     ```sh
     (env)$
     ```
@@ -50,28 +51,40 @@
             ```sh
             (env)> python -m pip install --upgrade pip
             ```
+        
     * django 패키지 설치 - 본 프로젝트에서는 Django 2.0.0 버전을 사용하였다.
         ```sh
         (env)$ pip install django~=2.0.0
         ```
+        
     * djangorestframework 패키지 설치
          ```sh
         (env)$ pip install djangorestframework
         ```
+        
     * django-sslserver 패키지 설치
         ```sh
         (env)$ pip install django-sslserver
         ```
+        
     * selenium 패키지 설치
         ```sh
         (env)$ pip install selenium
         ```
+        
     * requests 패키지 설치
         ```sh
         (env)$ pip install requests
         ```
+
+    * whois 패키지 설치
+        ```sh
+        (env)$ pip install whois
+        ```    
+        
     
 * 2-3) django 설정
+    
     * makemigrations - 모델의 변경사항을 파일로 생성
         ```sh
         (env)$ python manage.py makemigrations app
@@ -86,15 +99,17 @@
     
          ```sh
         PATH=$PATH:/path/to/webdriver/directory
-        ```
+         ```
 #####	3) 실행 방법
 * 3-1) 테스트 실행 방법
     ssl을 적용해 서버를 실행하는 방법은 아래와 같다.
+    
     ```sh
     (env)$ python manage.py runsslserver
     ```
 * 3-2) 모바일 실행 방법
     settings.py 를 열고 ALLOWED_HOSTS 에 아래와 같이 사용할 도메인을 추가한다.
+    
     ```sh
     # settings.py
     
