@@ -62,11 +62,13 @@ function autoModal(result_url) {
 
 //GET JSON DATA about URL
 function sendURL(url){
+	
 	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET","https://moosong.iptime.org:8000/processing/"+url,false);
+	xhttp.open("GET","YOUR_SERVER_URL"+url,false);
 	xhttp.send();
 	var raw = xhttp.responseText 
 	return JSON.parse(raw);
+	
 }
 
 //MODAL FUNCTION
