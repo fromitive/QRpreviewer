@@ -80,11 +80,11 @@
     * whois 패키지 설치
         ```sh
         (env)$ pip install whois
-        ```    
+        ```
         
     
 * 2-3) django 설정
-    
+  
     * makemigrations - 모델의 변경사항을 파일로 생성
         ```sh
         (env)$ python manage.py makemigrations app
@@ -94,12 +94,23 @@
         (env)$ python manage.py migrate
         ```
 * 2-4) Screenshoter 설정
-    * 환경 변수 설정
-    selenium이 webdriver를 온전히 인식하기 위해서는 환경변수를 설정할 필요가 있다. webdriver를 압축 풀어서 해당 디렉토리를 PATH 변수에 추가해준다. Linux 기준으로 홈 디렉토리 안에 자신이 bash쉘을 사용한다면 .bashrc에 다음과 같은 줄을 추가해준다.
     
-         ```sh
+    * 환경 변수 설정
+    selenium이 webdriver를 온전히 인식하기 위해서는 환경변수를 설정할 필요가 있다. 
+    
+      여기서는 chrome webdriver를 사용한다.
+      
+      1) <http://chromedriver.chromium.org/downloads>에서 자신의 Chrome browser 버젼에 맞는 Webdriver를 다운로드 한다.
+      
+      2) 다운로드한 webdriver를 압축 푼 후, 해당 디렉토리를 PATH 변수에 추가해준다.
+      
+      3-1) Linux 기준으로 홈 디렉토리 안에 자신이 bash쉘을 사용한다면 .bashrc에 다음과 같은 줄을 추가해준다.
+      
+      ```sh
         PATH=$PATH:/path/to/webdriver/directory
-         ```
+      ```
+      
+      3-2) Windows 기준으로는 시스템 -> 고급 시스템 설정 -> 고급 탭 -> 환경변수 에서 사용자 변수의 PATH를 편집 버튼을 눌러 Webdriver가 설치된 경로를 추가해준다.
 #####	3) 실행 방법
 * 3-1) 테스트 실행 방법
     ssl을 적용해 서버를 실행하는 방법은 아래와 같다.
@@ -115,7 +126,7 @@
     
     ALLOWED_HOSTS = [
         ...,
-        '도메인 이름 또는 IP',
+        '자신의 도메인 이름 또는 IP',
     ]
     ```
     아래와 같이 포트번호를 지정해 서버를 실행한다.
