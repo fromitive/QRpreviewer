@@ -25,7 +25,9 @@ SECRET_KEY = '#l@2c$c^0)+9k#=(#j5ig4$-gl0t@9+)ao+u$1j*omczrxki9%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['moosong.iptime.org']
+#자신의 IP 또는 도메인 이름을 작성.
+#로컬에서 테스팅하려면 다음과같이 작성하고 python manage.py runsslserver 동작
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
