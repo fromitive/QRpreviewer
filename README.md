@@ -1,6 +1,6 @@
 # QR-shield(QR previewer)
 qr코드를 스캔하여 웹 접속 없이 미리볼 수 있는 웹 앱 기반 서비스
-# demo
+# Demo
 ![Alt Text](https://github.com/fromitive/QRpreviewer/raw/master/resource/demo.gif)
 
 # 특징
@@ -8,7 +8,7 @@ qr코드를 스캔하여 웹 접속 없이 미리볼 수 있는 웹 앱 기반 �
 - 웹 앱 기반 서비스로서 별도의 앱 설치 없이 이용 할 수 있다.
 - 서버 정보 제공을 RESTful API 기반으로 제공하기 때문에 여러 플랫폼으로 개발 가능하다.
 
-# tech
+# Tech
 ### client
 - [webQR](https://github.com/LazarSoft/jsqrcode) - javascript QR코드 스캔 모듈
 - [webRCT](https://webrtc.org/start/) - QR코드를 찍기 위한 카메라 모듈 
