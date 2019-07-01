@@ -3,10 +3,12 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view,renderer_classes
 from rest_framework.renderers import JSONRenderer
-from .serializers import *
-from .screenshoter.screenshoter import Screenshoter
+from .serializers import * # include models module
 from .vt_validate.vt_api import * #for vt_api
+from .webDriver.launchWebDriver import WebDriver #for WebDriver
+from datetime import datetime
 import whois
+import os
 import sys
 def mainPage(request):
     return render(request,'main/main.html',{})
@@ -24,36 +26,49 @@ def contactPage(request):
 @renderer_classes((JSONRenderer,))
 def processing(request,url):
     print(url)
-    url_dict = {'url':url}
     if QRInfo.objects.filter(url=url).exists():
-       print("exist!!!") 
-       qrinfo = QRInfo.objects.get(url=url) 
-       serial = TestSerializer(qrinfo)
-       return Response(serial.data)
+        print("exist!!!") 
+        qrinfo = QRInfo.objects.get(url=url) 
+        serial = TestSerializer(qrinfo)
+        return Response(serial.data)
     else:
-       qrseri = QRInfoSerializer(data=url_dict) 
-       try:
+        try:
+            #Critical Section Start
+            print('-'*40,'entering Critical Section')
+            while CriticalSection.objects.get(pk=1).lock:
+                pass
+            c = CriticalSection.objects.get(pk=1)
+            c.lock=True
+            c.save()
+
+            w = WebDriver() 
+            #connect web site
+            w.openDriver()
+            w.driver.get(url)
+            #get original url
+            original_url = w.driver.execute_script("return window.location.href") 
+            url_dict = {'url':url,'original_url':original_url}
+            qrseri = QRInfoSerializer(data=url_dict) 
+            
             #validate url
             qrseri.is_valid(raise_exception=True) 
             qrinfo = QRInfo()
             qrinfo = qrseri.save(qrinfo)
-            #1 call virustotal api
-            virInfo=saveVirusTotalInfo(qrinfo)
-            #2 call whoisapi from url
-            
+            #1. get screenshot
+            saveScreenshotInfo(qrinfo,w)
+            c.lock=False
+            c.save()
+            print('-'*40,'relase Critical Section')
+            #Critical Section End
+            #2 call virustotal api
+            saveVirusTotalInfo(qrinfo)
+            #3 call whoisapi from url
             saveWhoisInfo(qrinfo)
-            #3. get screenshot
-            if virInfo.positives:
-                sinfo = ScreenshotInfo(qrInfo=qrinfo,imgPath="malsite")
-                sinfo.save() 
-            else:
-                saveScreenshotInfo(qrinfo)
-
             #4 generate serializer
             result = TestSerializer(qrinfo)
             print('data is :',result.data)
             return Response(result.data)
-       except Exception as e:
+        except Exception as e:
            _,_, tb = sys.exc_info()
            print("[DEBUG] validate error : ",e)
            print("[DEBUG] error line no =",tb.tb_lineno)
@@ -63,27 +78,25 @@ def processing(request,url):
 
 def saveVirusTotalInfo(qrinfo):
     try:
-        vt_api_info = getVirInfo(qrinfo.url) # dict형
+        vt_api_info = getVirInfo(qrinfo.original_url) # dict형
+        print(vt_api_info)
         virInfo = VirusTotalInfo(qrInfo=qrinfo,scanDate=vt_api_info['scanDate'],positives=vt_api_info['positives'],total=vt_api_info['total'])
         virInfo.save()
         #machineName save & scanInfo save
         for mname in vt_api_info['scanInfo'].keys():
-            mnameModel = None
             if not machineName.objects.filter(name=mname).exists():
                 print(mname,"not saved")
                 mnameModel = machineName(name=mname)
                 mnameModel.save()
-            else:
-                mnameModel = machineName.objects.get(name=mname)
+            mnameModel = machineName.objects.get(name=mname)
             sinfo = ScanInfo(vInfo=virInfo,machineName=mnameModel,detected=vt_api_info['scanInfo'][mname]['detected'],result=vt_api_info['scanInfo'][mname]['result'])
             sinfo.save()
     except Exception as e:
         print("DEBUG virustotal api error",e)
-    return virInfo
 
 def saveWhoisInfo(qrinfo):
     try:
-        whoisRAWInfo = whois.whois(qrinfo.url)
+        whoisRAWInfo = whois.whois(qrinfo.original_url)
 
         wInfo = WhoisInfo(qrInfo=qrinfo, registrar=whoisRAWInfo['registrar'], 
                 org=whoisRAWInfo['org'], address=whoisRAWInfo['address'], 
@@ -113,11 +126,15 @@ def saveWhoisInfo(qrinfo):
     except Exception as e:
         print("[debug] whois api error!",e)
 
-def saveScreenshotInfo(qrinfo):
+def saveScreenshotInfo(qrinfo,w):
     try:
         dir_path = 'app/static/images'
-        shoter = Screenshoter(qrinfo.url,dir_path) 
-        imgPath= shoter.shot()
+        now = str(datetime.now().timestamp())  
+        imgPath=''.join([now,'_image.png'])
+        fullPath = os.path.join(dir_path,imgPath)
+        #saveScreenshot
+        status = w.driver.save_screenshot(fullPath) 
+        print('Screenshot Captured : ',status)
         sinfo = ScreenshotInfo(qrInfo=qrinfo,imgPath=imgPath)
         sinfo.save() 
     except Exception as e:

@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class QRInfo(models.Model):
     url = models.URLField(primary_key = True)
+    original_url = models.URLField(null=True)
     
 class ScreenshotInfo(models.Model):
     qrInfo = models.OneToOneField(QRInfo,related_name='scrInfo',on_delete=models.CASCADE,primary_key= True) 
@@ -37,8 +38,10 @@ class machineName(models.Model):
 
 class ScanInfo(models.Model):
     vInfo = models.ForeignKey(VirusTotalInfo,related_name='scanResult',on_delete=models.CASCADE)
-    machineName = models.OneToOneField(machineName,related_name='machineName',on_delete=models.CASCADE)
+    machineName = models.ForeignKey(machineName,related_name='machineName',on_delete=models.CASCADE)
     detected = models.NullBooleanField()
     result = models.CharField(max_length=100)
     
 
+class CriticalSection(models.Model):
+    lock = models.BooleanField()

@@ -5,9 +5,10 @@ from rest_framework import serializers
 class QRInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = QRInfo
-        fields = ('url',)
+        fields = ('url','original_url')
     def save(self,instance):
         instance.url = self.validated_data['url'] 
+        instance.original_url = self.validated_data['original_url']
         instance.save()
         return instance
         
@@ -62,4 +63,4 @@ class TestSerializer(serializers.ModelSerializer):
     virusInfo = VirusTotalInfoSerializer(read_only=True)
     class Meta:
         model = QRInfo
-        fields = ('url','scrInfo','whoisInfo','virusInfo')
+        fields = ('url','original_url','scrInfo','whoisInfo','virusInfo')
